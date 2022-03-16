@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.css';
-import { runOnce, runOnceTwo } from './loops';
+import { runOnceUsingForEach, runOnceUsingFor, runOnceTwo } from './loops';
 
 export default function App() {
   const someObj = {
@@ -9,9 +9,14 @@ export default function App() {
   };
 
   useEffect(() => {
-    console.log('test');
-    runOnce(someObj);
-    runOnceTwo(someObj);
+    // console.log('test');
+    runOnceUsingForEach(someObj);
+    setTimeout(() => {
+      runOnceUsingFor(someObj);
+    }, 2000);
+    setTimeout(() => {
+      runOnceTwo(someObj);
+    }, 6000);
   }, []);
 
   return (
