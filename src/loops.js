@@ -2,7 +2,7 @@ const testDelayFn = async () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve('a');
-    }, 4000);
+    }, 1000);
   });
 };
 
@@ -10,7 +10,7 @@ const testDelayFn = async () => {
 export const runOnceUsingForEach = async (someObj) => {
   let arr = [];
   Object.keys(someObj).forEach(async (obj, indx) => {
-    console.log(indx, ' (1-forEach) obj:', obj);
+    // console.log(indx, ' (1-forEach) obj:', obj);
     arr = [
       ...arr,
       {
@@ -29,7 +29,7 @@ export const runOnceUsingFor = async (someObj) => {
 
   // this will always be blank
   for (var i = 0; i < Object.keys(someObj).length; i++) {
-    console.log(i, ' (2-for) obj:', Object.keys(someObj)[i]);
+    // console.log(i, ' (2-for) obj:', Object.keys(someObj)[i]);
     arr2 = [
       ...arr2,
       {
@@ -55,10 +55,9 @@ const makeArrayComplete = async (someObj, obj, indx) => {
   });
 };
 
-export const runOnceTwo = async (someObj) => {
+export const runWithForEach = async (someObj) => {
   let arr3 = [];
-
-  await Object.keys(someObj).forEach(async (obj, indx) => {
+  Object.keys(someObj).forEach(async (obj, indx) => {
     console.log('newObj:', newObj);
     const newObj = await makeArrayComplete(someObj, obj, indx);
     arr3 = [...arr3, newObj];
